@@ -1,0 +1,6 @@
+@CS_And_React_HostAddress = http://localhost:5000
+
+GET {{CS_And_React_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

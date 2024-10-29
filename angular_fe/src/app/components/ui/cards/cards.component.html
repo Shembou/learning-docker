@@ -1,0 +1,17 @@
+<section class="movie-poster-section">
+    @for(item of shows; track item.title) {
+    <div class="movie-card">
+        <img ngSrc={{item.poster}} alt="{{item.title}} Poster" class="movie-poster" width="300" height="400" sizes="(max-width: 499px) 100vw, (max-width: 800px) 50vw, 25vw" placeholder="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOsr6ioBwAE3QHw67jIJAAAAABJRU5ErkJggg=="/>
+        <div class="movie-info">
+            <h2 class="movie-title">{{item.title}}</h2>
+            <p class="movie-rating"><strong>Rated:</strong> {{item.rated}}</p>
+            <p class="movie-imdbRating"><strong>IMDb Rating:</strong> {{item.imdbRating}}</p>
+            @if (item.metascore != 0) {
+            <p class="movie-metascore">
+                <strong>Metascore:</strong> {{item.metascore}}
+            </p>
+            }
+        </div>
+    </div>
+    }
+</section>

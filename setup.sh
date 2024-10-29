@@ -1,0 +1,1 @@
+/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P Administrator1 -i /var/opt/mssql/scripts/InitializeDatabase.sql

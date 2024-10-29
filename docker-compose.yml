@@ -1,0 +1,44 @@
+version: '3.4'
+services:
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sql_server_container
+    restart: always
+    ports:
+      - "1440:1433"   
+    environment:      
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Administrator1
+      - MSSQL_PID=Express
+  site_api:
+    build:
+      context: .
+      dockerfile: CS_And_React/Dockerfile
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    depends_on:
+      - mssql
+  angular_fe:
+    build:
+      context: ./angular_fe
+      dockerfile: Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 4000:4000
+    depends_on:
+     site_api:
+        condition: service_started
+  react_fe:
+    build:
+      context: ./react_fe
+      dockerfile: Dockerfile
+    environment:
+      NODE_ENV: production
+      API_ENDPOINT: 'https://site_api:8081/api'
+    ports:
+      - "3000:3000"
+    depends_on:
+      site_api:
+        condition: service_started

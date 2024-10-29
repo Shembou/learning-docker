@@ -1,0 +1,65 @@
+.movie-poster-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.movie-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 300px;
+    padding-bottom: 10px;
+
+    &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+    }
+}
+
+.movie-poster {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-bottom: 2px solid #ddd;
+}
+
+.movie-info {
+    padding: 15px;
+    text-align: center;
+
+    .movie-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin: 10px 0;
+    }
+
+    .movie-rating,
+    .movie-imdbRating,
+    .movie-metascore {
+        font-size: 0.9rem;
+        margin: 5px 0;
+        color: #555;
+    }
+
+    .movie-rating strong,
+    .movie-imdbRating strong,
+    .movie-metascore strong {
+        color: #000;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .movie-card {
+        width: 100%;
+        max-width: 300px;
+    }
+}
